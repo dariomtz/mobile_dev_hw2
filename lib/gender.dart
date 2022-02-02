@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class GenderPick extends StatelessWidget {
-  final bool gender;
+  final bool? gender;
   final Function setGender;
   const GenderPick({
     Key? key,
@@ -11,6 +11,10 @@ class GenderPick extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool female = gender ?? false;
+    // Again, there is no way gender can be null in the second option but dart
+    // is dumb and wants me to check
+    bool male = (gender == null) ? false : !(gender ?? false);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -19,7 +23,7 @@ class GenderPick extends StatelessWidget {
             setGender(true);
           },
           icon: const Icon(Icons.female),
-          color: gender ? Colors.green : Colors.grey,
+          color: female ? Colors.green : Colors.grey,
           iconSize: 35,
         ),
         IconButton(
@@ -27,7 +31,7 @@ class GenderPick extends StatelessWidget {
             setGender(false);
           },
           icon: const Icon(Icons.male),
-          color: !gender ? Colors.green : Colors.grey,
+          color: male ? Colors.green : Colors.grey,
           iconSize: 35,
         ),
       ],

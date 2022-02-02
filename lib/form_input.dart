@@ -5,12 +5,12 @@ class NumericInput extends StatelessWidget {
   final TextEditingController controller;
   final String label;
 
-  const NumericInput(
-      {Key? key,
-      required this.iconData,
-      required this.controller,
-      required this.label})
-      : super(key: key);
+  const NumericInput({
+    Key? key,
+    required this.iconData,
+    required this.controller,
+    required this.label,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
